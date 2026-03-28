@@ -1,0 +1,9 @@
+[build]
+  base = "crud-app"
+  command = "npm install --include=dev && npm run build"
+  publish = "dist/crud-app/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
