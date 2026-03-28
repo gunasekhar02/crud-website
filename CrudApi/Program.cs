@@ -7,9 +7,11 @@ builder.Services.AddDbContext<CrudApi.Data.AppDbContext>(options =>
     options.UseSqlite("Data Source=crud.db"));
 
 builder.Services.AddControllers();
+
+// ✅ FIXED CORS
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()
               .AllowAnyHeader()
@@ -43,7 +45,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-// Use CORS BEFORE Authorization
+// ✅ IMPORTANT: CORS before everything
 app.UseCors("AllowAll");
 
 app.UseAuthorization();
