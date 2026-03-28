@@ -1,0 +1,46 @@
+<div class="crud-container">
+  <div class="header">
+    <h1>CRUD Operations</h1>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+
+  <div class="add-section">
+    <h2>Add Item</h2>
+    <div class="form-group">
+      <input 
+        type="text" 
+        [(ngModel)]="newItemName" 
+        placeholder="Item Name"
+        (keyup.enter)="addItem()"
+      >
+      <button (click)="addItem()">Add</button>
+    </div>
+  </div>
+
+  <div class="items-section">
+    <h2>Items</h2>
+    <ul class="items-list">
+      <li *ngFor="let item of items" class="item">
+        <div *ngIf="editingId !== item.id" class="item-display">
+          <span>{{ item.name }}</span>
+          <div class="item-actions">
+            <button class="edit-btn" (click)="editItem(item.id, item.name)">Edit</button>
+            <button class="delete-btn" (click)="deleteItem(item.id)">Delete</button>
+          </div>
+        </div>
+        <div *ngIf="editingId === item.id" class="item-edit">
+          <input 
+            type="text" 
+            [(ngModel)]="editingName" 
+            (keyup.enter)="saveEdit(item.id)"
+          >
+          <button class="save-btn" (click)="saveEdit(item.id)">Save</button>
+          <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
