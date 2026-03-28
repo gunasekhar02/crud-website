@@ -11,7 +11,7 @@ export interface Item {
   providedIn: 'root'
 })
 export class ItemService {
-  private apiUrl = 'https://your-backend.onrender.com/api/items';
+  private apiUrl = 'https://crud-backend.onrender.com/api/items';
 
   constructor(private http: HttpClient) { }
 
