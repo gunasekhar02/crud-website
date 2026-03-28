@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: crud-backend
+    runtime: docker
+    plan: free
+    branch: main

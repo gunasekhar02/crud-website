@@ -43,7 +43,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseCors();
+// Use CORS BEFORE Authorization
+app.UseCors("AllowAll");
+
 app.UseAuthorization();
 app.MapControllers();
 
